@@ -1,0 +1,4 @@
+/database/migrations
+vendor
+.env
+composer.lock
