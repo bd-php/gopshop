@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
+    <meta name="author" content="SSD-TECH">
+    <title>GopShop</title>
+    <meta name="title" content="">
+    <meta name="description" content="GopShop"/>
+    <meta name="Copyright" content="All Rights Reserved.">
+    <!--<meta http-equiv="Content-Security-Policy"-->
+          <!--content="default-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*; connect-src 'self' https://*; img-src 'self' data: https://*; style-src 'self' 'unsafe-inline' https://*; ">-->
+
+    <link href="images/favicon.png" type="image/x-icon" rel="shortcut icon"/>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="https://connect.facebook.net/en_US/fbinstant.6.2.js"></script>
+
+</head>
+
+<body onload="init()">
+
+<div id="page_body">
+</div>
+
+<script>
+
+    USER_FB_ID = "";
+    USER_FB_NAME = "";
+    USER_FB_PROPIC = "";
+
+    window.fbAsyncInit = function () {
+        FB.init({
+            appId: '614718092329381',
+            autoLogAppEvents: true,
+            xfbml: true,
+            version: 'v3.0'
+        });
+    };
+
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {
+            return;
+        }
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/swiper.min.js"></script>
+<script src="js/gopshop.js"></script>
+<script src="js/fbInstantGames.js"></script>
+
+
+</body>
+</html>
