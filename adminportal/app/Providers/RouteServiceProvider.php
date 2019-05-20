@@ -40,6 +40,7 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapExtensionsApiRoutes();
         $this->mapExtensionsRoutes();
         $this->mapWebRoutes();
+        $this->mapUiRoutes();
         //
     }
 
@@ -110,5 +111,13 @@ class RouteServiceProvider extends ServiceProvider
                 });
 
             });
+    }
+
+    protected function mapUiRoutes()
+    {
+        Route::prefix('ui')
+            ->middleware(['cors'])
+            ->namespace($this->namespace)
+            ->group(base_path('routes/ui.php'));
     }
 }

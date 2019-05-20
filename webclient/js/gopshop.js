@@ -22,8 +22,9 @@ function startGame() {
     var settings = {
         "async": true,
         "crossDomain": true,
-        "url": "https://codeimpact.dotlines.com.sg/test/gopshoptest.php",
-        "method": "GET",
+        //"url": "https://codeimpact.dotlines.com.sg/test/gopshoptest.php",
+        "url": "http://127.0.0.1:8000/ui/demo",
+        "method": "POST",
         "headers": {
             "Apiname": "story_cat_list"
         }
