@@ -13,3 +13,9 @@ Route::get('/demo', function () {
 Route::post('/demo', function () {
     return "Hello demo";
 });
+
+Route::post('/index', 'ClientUiController@index');
+Route::post('/category', 'ClientUiController@category');
+Route::post('/favourite', 'ClientUiController@favourite');
+Route::post('/profile', 'ClientUiController@profile');
+Route::post('/notification', 'ClientUiController@notification');
