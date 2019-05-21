@@ -849,263 +849,35 @@ HTML;
     public function notification()
     {
         $htmlstr = <<<HTML
-        
 <header class="header">
     <ul>
-        <li><a href="javascript:void();"><img src="images/search.svg" alt=""> </a></li>
-        <li><a href="javascript:void();" onclick="go_to_index('header_logo'); return false;"><img src="images/logo-icon.svg" alt=""> </a></li>
-        <li><a href="javascript:void();" class="notify" onclick="go_to_notification('header_notification'); return false;"><img src="images/icon-bell.svg" alt=""> </a></li>
+        <li> <a href="javascript:void();" onclick="go_to_back('header_back'); return false;"><img src="images/back.svg" alt=""> </a> </li>
+        <li>নোটিফিকেশন</li>
+        <li></li>
     </ul>
 </header>
 
-<div class="inner">
-
-    <div class="home-carousel">
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="story-box">
-                        <a href="">
-                            <div class="story-img">
-                                <img src="images/story-img-01.jpg" alt="">
-                                <p>
-                                    <span>ভৌতিক </span>
-                                    <span>১৩+</span>
-                                </p>
-                            </div>
-                            <div class="story-box-content">
-                                <h3>নায়িকা যেভাবে খুন হলো</h3>
-                                <span>অনার্য তাপস </span>
-                                <ul>
-                                    <li><img src="images/star.svg" alt=""></li>
-                                    <li><img src="images/star.svg" alt=""></li>
-                                    <li><img src="images/star.svg" alt=""></li>
-                                    <li><img src="images/star-half.svg" alt=""></li>
-                                    <li><img src="images/star-line.svg" alt=""></li>
-                                    <li>৩.৫</li>
-                                </ul>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="story-box">
-                        <a href="">
-                            <div class="story-img">
-                                <img src="images/story-img-01.jpg" alt="">
-                                <p>
-                                    <span>ভৌতিক </span>
-                                    <span>১৩+</span>
-                                </p>
-                            </div>
-                            <div class="story-box-content">
-                                <h3>নায়িকা যেভাবে খুন হলো</h3>
-                                <span>অনার্য তাপস </span>
-                                <ul>
-                                    <li><img src="images/star.svg" alt=""></li>
-                                    <li><img src="images/star.svg" alt=""></li>
-                                    <li><img src="images/star.svg" alt=""></li>
-                                    <li><img src="images/star-half.svg" alt=""></li>
-                                    <li><img src="images/star-line.svg" alt=""></li>
-                                    <li>৩.৫</li>
-                                </ul>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="story-box">
-                        <a href="">
-                            <div class="story-img">
-                                <img src="images/story-img-01.jpg" alt="">
-                                <p>
-                                    <span>ভৌতিক </span>
-                                    <span>১৩+</span>
-                                </p>
-                            </div>
-                            <div class="story-box-content">
-                                <h3>নায়িকা যেভাবে খুন হলো</h3>
-                                <span>অনার্য তাপস </span>
-                                <ul>
-                                    <li><img src="images/star.svg" alt=""></li>
-                                    <li><img src="images/star.svg" alt=""></li>
-                                    <li><img src="images/star.svg" alt=""></li>
-                                    <li><img src="images/star-half.svg" alt=""></li>
-                                    <li><img src="images/star-line.svg" alt=""></li>
-                                    <li>৩.৫</li>
-                                </ul>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <!-- Add Pagination -->
-            <div class="swiper-pagination"></div>
-        </div>
+<div class="notification">
+    <div class="notification-box">
+        <span class="close-notify"></span>
+        <h3>নতুন গল্প এসেছে। এখনই পড়ুন! 😃</h3>
+        <p>৩২ মিনিট আগে</p>
     </div>
-
-    <div class="home-category">
-        <h2>গল্পের টাইপ <a href="">আরও দেখুন</a></h2>
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="category-box">
-                        <a href="category.html">
-                            <img src="images/category-img-01.jpg" alt="">
-                        </a>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="category-box">
-                        <a href="category.html">
-                            <img src="images/category-img-02.jpg" alt="">
-                        </a>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="category-box">
-                        <a href="category.html">
-                            <img src="images/category-img-01.jpg" alt="">
-                        </a>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="category-box">
-                        <a href="category.html">
-                            <img src="images/category-img-02.jpg" alt="">
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="notification-box">
+        <span class="close-notify"></span>
+        <h3>গল্প ১ পরিবর্তন হয়েছে!</h3>
+        <p>৩২ মিনিট আগে</p>
     </div>
-
-    <div class="popular-slider">
-        <h2>জনপ্রিয় গল্প</h2>
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="story-box">
-                        <a href="">
-                            <div class="story-img">
-                                <img src="images/story-img-01.jpg" alt="">
-                                <p>
-                                    <span>ভৌতিক </span>
-                                    <span>১৩+</span>
-                                </p>
-                            </div>
-                            <div class="story-box-content">
-                                <h3>নায়িকা যেভাবে খুন হলো</h3>
-                                <span>অনার্য তাপস </span>
-                                <ul>
-                                    <li><img src="images/star.svg" alt=""></li>
-                                    <li><img src="images/star.svg" alt=""></li>
-                                    <li><img src="images/star.svg" alt=""></li>
-                                    <li><img src="images/star-half.svg" alt=""></li>
-                                    <li><img src="images/star-line.svg" alt=""></li>
-                                    <li>৩.৫</li>
-                                </ul>
-                            </div>
-                            <div class="story-length">
-                                <div class="circle-point">
-                                    <svg class="circle-round" viewbox="0 0 100 100" width=24 height="24"
-                                         data-percent="37">
-                                        <circle cx="50" cy="50" r="40"/>
-                                    </svg>
-                                </div>
-                                ৩৭%
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="story-box">
-                        <a href="">
-                            <div class="story-img">
-                                <img src="images/story-img-01.jpg" alt="">
-                                <p>
-                                    <span>ভৌতিক </span>
-                                    <span>১৩+</span>
-                                </p>
-                            </div>
-                            <div class="story-box-content">
-                                <h3>নায়িকা যেভাবে খুন হলো</h3>
-                                <span>অনার্য তাপস </span>
-                                <ul>
-                                    <li><img src="images/star.svg" alt=""></li>
-                                    <li><img src="images/star.svg" alt=""></li>
-                                    <li><img src="images/star.svg" alt=""></li>
-                                    <li><img src="images/star-half.svg" alt=""></li>
-                                    <li><img src="images/star-line.svg" alt=""></li>
-                                    <li>৩.৫</li>
-                                </ul>
-                            </div>
-                            <div class="story-length">
-                                <div class="circle-point">
-                                    <svg class="circle-round" viewbox="0 0 100 100" width=24 height="24"
-                                         data-percent="37">
-                                        <circle cx="50" cy="50" r="40"/>
-                                    </svg>
-                                </div>
-                                ৩৭%
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="story-box">
-                        <a href="">
-                            <div class="story-img">
-                                <img src="images/story-img-01.jpg" alt="">
-                                <p>
-                                    <span>ভৌতিক </span>
-                                    <span>১৩+</span>
-                                </p>
-                            </div>
-                            <div class="story-box-content">
-                                <h3>নায়িকা যেভাবে খুন হলো</h3>
-                                <span>অনার্য তাপস </span>
-                                <ul>
-                                    <li><img src="images/star.svg" alt=""></li>
-                                    <li><img src="images/star.svg" alt=""></li>
-                                    <li><img src="images/star.svg" alt=""></li>
-                                    <li><img src="images/star-half.svg" alt=""></li>
-                                    <li><img src="images/star-line.svg" alt=""></li>
-                                    <li>৩.৫</li>
-                                </ul>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="story-box">
-                        <a href="">
-                            <div class="story-img">
-                                <img src="images/story-img-01.jpg" alt="">
-                                <p>
-                                    <span>ভৌতিক </span>
-                                    <span>১৩+</span>
-                                </p>
-                            </div>
-                            <div class="story-box-content">
-                                <h3>নায়িকা যেভাবে খুন হলো</h3>
-                                <span>অনার্য তাপস </span>
-                                <ul>
-                                    <li><img src="images/star.svg" alt=""></li>
-                                    <li><img src="images/star.svg" alt=""></li>
-                                    <li><img src="images/star.svg" alt=""></li>
-                                    <li><img src="images/star-half.svg" alt=""></li>
-                                    <li><img src="images/star-line.svg" alt=""></li>
-                                    <li>৩.৫</li>
-                                </ul>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="notification-box">
+        <span class="close-notify"></span>
+        <h3>আপনি ১০ জিবি ডাটা পেয়েছেন!</h3>
+        <p>৩২ মিনিট আগে</p>
     </div>
-
+    <div class="notification-box">
+        <span class="close-notify"></span>
+        <h3>নতুন গল্প এসেছে। এখনই পড়ুন! 😃</h3>
+        <p>৩২ মিনিট আগে</p>
+    </div>
 </div>
 
 <footer class="footer">
@@ -1129,6 +901,15 @@ HTML;
         </li>
     </ul>
 </footer>
+
+<div class="modal age-modal" id="age-modal">
+    <div class="modal-inner">
+        <img src="images/18+.svg" alt="">
+        <p>এই গল্পটি ১৮+ বয়সীদের জন্য। দয়া করে আপনার বয়স নিশ্চিত করুন।</p>
+        <a class="btn-white" href="javascript:void();" onclick="hideModal('age-modal')">বাতিল</a>
+        <a class="btn-common" href="">নিশ্চিত করুন</a>
+    </div>
+</div>
 
 HTML;
 
