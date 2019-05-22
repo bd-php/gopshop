@@ -107,7 +107,7 @@ class RouteServiceProvider extends ServiceProvider
                 ], function () {
                     Route::get('/product', 'Product@index');
                     Route::get('/order', 'Order@index');
-                    Route::get('/story', 'StoryApi@index');
+                    Route::post('/story', 'StoryApi@index');
                 });
 
             });

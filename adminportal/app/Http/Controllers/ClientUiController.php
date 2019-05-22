@@ -8,6 +8,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Modules\Api\StoryApi;
 use Illuminate\Http\Request;
 
 class ClientUiController extends Controller
@@ -19,8 +20,6 @@ class ClientUiController extends Controller
     {
         $ipClient = $request->ip();
         $method = $request->method();
-        $headers = getallheaders();
-        $this->apiName = $headers['Apiname'] ?? '';
         $this->data = $request->all();
     }
 
@@ -32,6 +31,40 @@ class ClientUiController extends Controller
      */
     public function index()
     {
+        $request = Request::create('/api/story?Apiname=story_cat_list', 'POST');
+        //$response = Route::dispatch($request);
+
+        $response = app()->handle($request);
+        $resdata = json_decode($response->getContent(), true);
+
+        $arr = [];
+        $CATHTML = '';
+        foreach ($resdata as $cat) {
+
+            $base64 = '';
+            if ($cat['cat_image'] != '') {
+                $path_file = config('filesystems.disks.path_file', '');
+                $pathurl = $path_file . '/' . $cat['cat_image'];
+
+                if (file_exists($pathurl)) {
+                    $img_data = file_get_contents($pathurl);
+                    $type = pathinfo($pathurl, PATHINFO_EXTENSION);
+                    $base64 = 'data:image/' . $type . ';base64,' . base64_encode($img_data);
+                }
+
+                $CATHTML .= <<<CAT
+<div class="swiper-slide">
+    <div class="category-box">
+        <a href="category.html">
+            <img src="{$base64}" alt="{$cat['cat_name']}">
+        </a>
+    </div>
+</div>
+CAT;
+            }
+        }
+
+
         $htmlstr = <<<HTML
         
 <header class="header">
@@ -132,34 +165,7 @@ class ClientUiController extends Controller
         <h2>গল্পের টাইপ <a href="">আরও দেখুন</a></h2>
         <div class="swiper-container">
             <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="category-box">
-                        <a href="category.html">
-                            <img src="images/category-img-01.jpg" alt="">
-                        </a>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="category-box">
-                        <a href="category.html">
-                            <img src="images/category-img-02.jpg" alt="">
-                        </a>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="category-box">
-                        <a href="category.html">
-                            <img src="images/category-img-01.jpg" alt="">
-                        </a>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="category-box">
-                        <a href="category.html">
-                            <img src="images/category-img-02.jpg" alt="">
-                        </a>
-                    </div>
-                </div>
+                {$CATHTML}
             </div>
         </div>
     </div>

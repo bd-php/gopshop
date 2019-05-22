@@ -45,6 +45,7 @@ function startGame() {
 function showPage(page, pageaction) {
     console.log('showPage(): ' + page);
     STACK.push({page: page, pageaction: pageaction});
+
     var settings = {
         "async": true,
         "crossDomain": true,
@@ -79,6 +80,13 @@ function showPage(page, pageaction) {
  */
 function go_to_back(clickpoint) {
     console.log('go_to_back(): ' + clickpoint);
+    /*this pop is to remove current page from stack*/
+    STACK.pop();
+    var lastpage = STACK.pop();
+    if (lastpage.hasOwnProperty('page') && lastpage.hasOwnProperty('pageaction')) {
+        console.log('going to back page : ' + lastpage.page);
+        showPage(lastpage.page, lastpage.pageaction)
+    }
 }
 
 /**

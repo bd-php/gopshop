@@ -6,25 +6,31 @@ use App\Models\Story;
 use App\Models\StoryCategory;
 use Illuminate\Http\Request;
 
-class StoryApi extends General
+class StoryApi extends \App\Http\Controllers\Controller
 {
-
-    public $limit;
-    public $start;
-    public $orderBy;
-    public $sort;
-    public $model;
+    public $apiName;
+    public $data;
 
     public function __construct(Request $request)
     {
-        parent::__construct($request);
-        $data = $this->data;
-        $this->limit = empty($data['limit']) ? -1 : $data['limit'];
-        $this->start = empty($data['start']) ? 0 : (int)$data['start'];
-        $this->orderBy = empty($data['orderBy']) ? [] : explode(',', $data['orderBy']);
-        $this->sort = $data['sort'] ?? 'ASC';
-        $this->model = empty($data['model']) ? '' : $data['model'];
+        $ipClient = $request->ip();
+        $method = $request->method();
+        $this->data = $request->all();
 
+        $query = $request->query();
+        $this->apiName = $query['Apiname'] ?? '';
+
+        if ($this->apiName == '') {
+            $error = array(
+                'error' => 1,
+                'code' => 404,
+                'detail' => 'Api name not found',
+                'msg' => 'Not found'
+            );
+            header('Content-Type: application/json');
+            echo json_encode($error, JSON_UNESCAPED_UNICODE);
+            exit;
+        }
     }
 
     /**
@@ -47,34 +53,10 @@ class StoryApi extends General
      */
     function story_cat_list($params)
     {
-        $limit = $this->limit;
-        $start = $this->start;
-        $orderBy = $this->orderBy;
-        $sort = $this->sort;
-
         $query = StoryCategory::query();
         $query->select(['cat_id', 'cat_name', 'cat_image']);
 
-        $hiddenFields = empty($this->hiddenFields) ? [] : explode(',', $this->hiddenFields);
-//Order by
-        if ($orderBy) {
-            foreach ($orderBy as $order) {
-                $query->orderBy($order, $sort);
-            }
-        }
-//Limit
-        if ($limit != -1) {
-            $query->offset($start);
-            $query->limit($limit);
-        }
-
-//Render
-        return $query->get()->each(function ($item) use ($hiddenFields) {
-            $item->setAppends([]);
-            if ($hiddenFields) {
-                $item->makeHidden($hiddenFields);
-            }
-        })->toJson();
+        return $query->get()->toJson();
     }
 
     /**
@@ -84,11 +66,6 @@ class StoryApi extends General
      */
     public function story_list_by_cat($params)
     {
-        $limit = $this->limit;
-        $start = $this->start;
-        $orderBy = $this->orderBy;
-        $sort = $this->sort;
-
         $query = Story::query();
         $query->select(['story_id', 'story_name', 'story_cover_image']);
 
@@ -96,25 +73,6 @@ class StoryApi extends General
             $query->where('cat_id', '=', $params['catid']);
         }
 
-        $hiddenFields = empty($this->hiddenFields) ? [] : explode(',', $this->hiddenFields);
-//Order by
-        if ($orderBy) {
-            foreach ($orderBy as $order) {
-                $query->orderBy($order, $sort);
-            }
-        }
-//Limit
-        if ($limit != -1) {
-            $query->offset($start);
-            $query->limit($limit);
-        }
-
-//Render
-        return $query->get()->each(function ($item) use ($hiddenFields) {
-            $item->setAppends([]);
-            if ($hiddenFields) {
-                $item->makeHidden($hiddenFields);
-            }
-        })->toJson();
+        return $query->get()->toJson();
     }
 }
