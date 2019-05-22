@@ -41,6 +41,7 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapExtensionsRoutes();
         $this->mapWebRoutes();
         $this->mapUiRoutes();
+        $this->mapStoryRoutes();
         //
     }
 
@@ -107,10 +108,16 @@ class RouteServiceProvider extends ServiceProvider
                 ], function () {
                     Route::get('/product', 'Product@index');
                     Route::get('/order', 'Order@index');
-                    Route::post('/story', 'StoryApi@index');
                 });
-
             });
+    }
+
+    protected function mapStoryRoutes()
+    {
+        Route::prefix('api')
+            ->middleware('api')
+            ->namespace('App\Modules\Api')
+            ->group(base_path('routes/story.php'));
     }
 
     protected function mapUiRoutes()
