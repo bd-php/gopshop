@@ -95,4 +95,9 @@ class StoryApi extends \App\Http\Controllers\Controller
 
         return $query->get()->toJson();
     }
+
+    function registration(Request $request){
+        return $request->all();
+    }
+
 }

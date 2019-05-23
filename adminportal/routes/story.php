@@ -6,3 +6,4 @@
  * Time: 2:11 PM
  */
 Route::post('/story/story-cat-list', 'StoryApi@story_cat_list');
+Route::post('/story/registration', 'GopshopUser@registration');

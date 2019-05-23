@@ -5,13 +5,14 @@ namespace App\Models;
 use Encore\Admin\Facades\Admin;
 use Helper;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class StoryCategory extends Model
+class GopshopUser extends Model
 {
     public $timestamps = false;
-    public $table = 'gopshop_category';
-    public $primaryKey = 'cat_id';
+    public $table = 'gopshop_users';
+    public $primaryKey = 'fb_id';
 
     public function cat_add_modifier()
     {
@@ -36,6 +37,10 @@ class StoryCategory extends Model
             $model->cat_updated_by = $id;
             $model->cat_updated_time = $model->freshTimestamp();
         });
+    }
+
+    public function registration(Request $request){
+        dd($request->all());
     }
 
     public function getCategories()
